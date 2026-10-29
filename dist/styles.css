@@ -46,7 +46,14 @@ button {
   z-index: 2;
   width: 100%;
   height: 100%;
+  opacity: 1;
   pointer-events: none;
+  transition: opacity 900ms ease;
+}
+
+.birthday-page.is-fireworks-fading #fireworks,
+.birthday-page.show-postcards #fireworks {
+  opacity: 0;
 }
 
 .surprise {
@@ -56,6 +63,15 @@ button {
   width: min(92vw, 920px);
   min-height: 520px;
   place-items: center;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.birthday-page.show-postcards .surprise {
+  opacity: 0;
+  transform: scale(0.94);
+  pointer-events: none;
 }
 
 .birthday-message {
@@ -274,35 +290,273 @@ button {
   opacity: 0;
 }
 
-.replay {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  z-index: 5;
-  padding: 10px 18px;
-  transform: translate(-50%, 10px);
-  border: 0;
-  border-radius: 999px;
+.postcards {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  visibility: hidden;
+  overflow: hidden;
   opacity: 0;
-  background: var(--yellow);
-  color: #6a4a00;
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
   pointer-events: none;
-  cursor: pointer;
+  transition: opacity 760ms ease, visibility 0s 760ms;
 }
 
-.birthday-page.is-open .replay {
-  transform: translate(-50%, 0);
+.birthday-page.show-postcards .postcards {
+  visibility: visible;
   opacity: 1;
   pointer-events: auto;
-  transition: opacity 400ms 1800ms ease, transform 400ms 1800ms ease;
+  transition-delay: 0s;
 }
 
-.replay:focus-visible {
-  outline: 4px solid rgba(240, 90, 146, 0.35);
-  outline-offset: 4px;
+.color-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--pink);
+}
+
+.color-block,
+.color-dot {
+  position: absolute;
+  display: block;
+}
+
+.color-block-pink {
+  inset: 0 38% 0 0;
+  background: var(--pink);
+}
+
+.color-block-yellow {
+  top: 0;
+  right: 0;
+  width: 38%;
+  height: 58%;
+  background: var(--yellow);
+}
+
+.color-block-blush {
+  right: 0;
+  bottom: 0;
+  width: 38%;
+  height: 42%;
+  background: var(--pink-light);
+}
+
+.color-dot {
+  border-radius: 50%;
+  background: var(--white);
+}
+
+.color-dot-one {
+  top: 9%;
+  left: 7%;
+  width: clamp(42px, 7vw, 92px);
+  aspect-ratio: 1;
+  opacity: 0.72;
+}
+
+.color-dot-two {
+  right: 8%;
+  bottom: 10%;
+  width: clamp(24px, 4vw, 54px);
+  aspect-ratio: 1;
+  opacity: 0.82;
+}
+
+.postcard-scroll {
+  position: relative;
+  z-index: 2;
+  height: 100svh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+}
+
+.postcard-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.postcard-page {
+  display: grid;
+  min-height: 100svh;
+  padding: clamp(70px, 10vh, 110px) 5vw clamp(92px, 12vh, 128px);
+  place-items: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.postcard {
+  position: relative;
+  width: min(82vw, 61vh, 620px);
+  aspect-ratio: 1;
+  padding: clamp(13px, 2vw, 22px);
+  border: 4px dashed var(--pink-dark);
+  background: var(--white);
+  animation: postcard-arrive 600ms cubic-bezier(0.18, 0.9, 0.32, 1.2) both;
+}
+
+.postcard::before,
+.postcard::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.postcard::before {
+  inset: -10px;
+  border: 2px dashed rgba(255, 255, 255, 0.82);
+  animation: dashed-jitter 480ms steps(2, end) infinite;
+}
+
+.postcard::after {
+  top: -8px;
+  right: 18%;
+  width: 74px;
+  height: 18px;
+  transform: rotate(2deg);
+  background: var(--yellow);
+}
+
+.postcard-inner {
+  display: grid;
+  height: 100%;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: clamp(12px, 2vw, 20px);
+  background: var(--white);
+}
+
+.photo-slot {
+  position: relative;
+  display: grid;
+  min-height: 0;
+  overflow: hidden;
+  place-items: center;
+  color: var(--pink-dark);
+}
+
+.photo-slot::before,
+.photo-slot::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64%;
+  height: 2px;
+  content: "";
+  background: currentColor;
+  opacity: 0.17;
+}
+
+.photo-slot::before {
+  transform: translate(-50%, -50%) rotate(35deg);
+}
+
+.photo-slot::after {
+  transform: translate(-50%, -50%) rotate(-35deg);
+}
+
+.photo-slot-one {
+  background: #fff0f6;
+}
+
+.photo-slot-two {
+  background: #fff8d7;
+}
+
+.photo-slot-three {
+  background: #ffe0eb;
+}
+
+.photo-slot-four {
+  background: #fff4c1;
+}
+
+.photo-number {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  z-index: 2;
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  line-height: 1;
+  opacity: 0.38;
+}
+
+.photo-label {
+  position: relative;
+  z-index: 2;
+  padding: 8px 12px;
+  background: var(--white);
+  font-size: clamp(0.62rem, 1.2vw, 0.8rem);
+  letter-spacing: 0.2em;
+}
+
+.postcard-copy {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  gap: 18px;
+  color: var(--pink-dark);
+}
+
+.postcard-copy span {
+  font-size: clamp(0.56rem, 1.1vw, 0.7rem);
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+}
+
+.postcard-copy strong {
+  color: var(--ink);
+  font-size: clamp(0.9rem, 2.2vw, 1.5rem);
+  line-height: 1.05;
+  text-align: right;
+}
+
+.page-progress {
+  position: fixed;
+  top: clamp(20px, 4vh, 42px);
+  right: clamp(18px, 4vw, 52px);
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--white);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+}
+
+.progress-line {
+  width: 32px;
+  height: 2px;
+  background: currentColor;
+}
+
+.scroll-hint {
+  position: fixed;
+  bottom: clamp(18px, 4vh, 42px);
+  left: 50%;
+  z-index: 8;
+  display: flex;
+  transform: translateX(-50%);
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  font-size: clamp(0.58rem, 1.3vw, 0.76rem);
+  letter-spacing: 0.2em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.scroll-arrow {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  place-items: center;
+  background: var(--white);
+  color: var(--pink-dark);
+  font-size: 1rem;
+  animation: scroll-nudge 900ms ease-in-out infinite alternate;
 }
 
 @keyframes lid-open {
@@ -344,6 +598,38 @@ button {
   }
 }
 
+@keyframes postcard-arrive {
+  from {
+    transform: translateY(28px) rotate(-1.5deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dashed-jitter {
+  0% {
+    transform: translate(-2px, 1px);
+  }
+  33% {
+    transform: translate(2px, -1px);
+  }
+  66% {
+    transform: translate(-1px, -2px);
+  }
+  100% {
+    transform: translate(1px, 2px);
+  }
+}
+
+@keyframes scroll-nudge {
+  to {
+    transform: translateY(6px);
+  }
+}
+
 @media (max-width: 640px) {
   .surprise {
     min-height: 480px;
@@ -360,8 +646,28 @@ button {
     transform: scale(0.86);
   }
 
-  .replay {
-    bottom: 3%;
+  .postcard-page {
+    padding-inline: 8vw;
+  }
+
+  .postcard {
+    width: min(84vw, 58vh);
+    padding: 13px;
+    border-width: 3px;
+  }
+
+  .postcard-copy {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .postcard-copy strong {
+    text-align: left;
+  }
+
+  .scroll-hint {
+    max-width: 80vw;
+    letter-spacing: 0.14em;
   }
 }
 
@@ -384,5 +690,14 @@ button {
   .birthday-page.is-open .birthday-message {
     animation-duration: 1ms;
     animation-delay: 0ms;
+  }
+
+  .postcard::before,
+  .scroll-arrow {
+    animation: none;
+  }
+
+  .postcard-scroll {
+    scroll-behavior: auto;
   }
 }

@@ -9,7 +9,7 @@
       content="A little birthday surprise for Xinyi — 11.4"
     />
     <title>Happy Birthday to Xinyi · 11.4</title>
-    <link rel="stylesheet" href="./styles.css?v=2" />
+    <link rel="stylesheet" href="./styles.css?v=4" />
   </head>
   <body>
     <main class="birthday-page" id="birthdayPage">
@@ -48,12 +48,90 @@
           </span>
         </button>
 
-        <button class="replay" id="replay" type="button" aria-label="再次播放生日惊喜">
-          Replay
-        </button>
+      </section>
+
+      <section class="postcards" id="postcards" aria-label="给 Xinyi 的生日明信片" aria-hidden="true">
+        <div class="color-background" aria-hidden="true">
+          <span class="color-block color-block-pink"></span>
+          <span class="color-block color-block-yellow"></span>
+          <span class="color-block color-block-blush"></span>
+          <span class="color-dot color-dot-one"></span>
+          <span class="color-dot color-dot-two"></span>
+        </div>
+
+        <div class="postcard-scroll" id="postcardScroll">
+          <section class="postcard-page" data-card="1" aria-label="明信片 1，共 4 张">
+            <article class="postcard">
+              <div class="postcard-inner">
+                <div class="photo-slot photo-slot-one" role="img" aria-label="明信片 1 图片占位区域">
+                  <span class="photo-number">01</span>
+                  <span class="photo-label">YOUR PHOTO HERE</span>
+                </div>
+                <div class="postcard-copy">
+                  <span>POSTCARD 01</span>
+                  <strong>For Xinyi, with love.</strong>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="postcard-page" data-card="2" aria-label="明信片 2，共 4 张">
+            <article class="postcard">
+              <div class="postcard-inner">
+                <div class="photo-slot photo-slot-two" role="img" aria-label="明信片 2 图片占位区域">
+                  <span class="photo-number">02</span>
+                  <span class="photo-label">YOUR PHOTO HERE</span>
+                </div>
+                <div class="postcard-copy">
+                  <span>POSTCARD 02</span>
+                  <strong>A little memory for 11.4.</strong>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="postcard-page" data-card="3" aria-label="明信片 3，共 4 张">
+            <article class="postcard">
+              <div class="postcard-inner">
+                <div class="photo-slot photo-slot-three" role="img" aria-label="明信片 3 图片占位区域">
+                  <span class="photo-number">03</span>
+                  <span class="photo-label">YOUR PHOTO HERE</span>
+                </div>
+                <div class="postcard-copy">
+                  <span>POSTCARD 03</span>
+                  <strong>May every day feel this bright.</strong>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="postcard-page" data-card="4" aria-label="明信片 4，共 4 张">
+            <article class="postcard">
+              <div class="postcard-inner">
+                <div class="photo-slot photo-slot-four" role="img" aria-label="明信片 4 图片占位区域">
+                  <span class="photo-number">04</span>
+                  <span class="photo-label">YOUR PHOTO HERE</span>
+                </div>
+                <div class="postcard-copy">
+                  <span>POSTCARD 04</span>
+                  <strong>Happy Birthday, Xinyi!</strong>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+
+        <div class="page-progress" aria-live="polite">
+          <span id="currentPage">01</span><span class="progress-line"></span><span>04</span>
+        </div>
+
+        <div class="scroll-hint" aria-hidden="true">
+          <span id="scrollHintText">SCROLL TO TURN THE PAGE</span>
+          <span class="scroll-arrow">↓</span>
+        </div>
       </section>
     </main>
 
-    <script src="./script.js?v=3"></script>
+    <script src="./script.js?v=4"></script>
   </body>
 </html>
