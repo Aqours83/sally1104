@@ -308,6 +308,70 @@ button {
   transition-delay: 0s;
 }
 
+.back-button {
+  position: fixed;
+  top: clamp(18px, 4vh, 40px);
+  left: clamp(16px, 4vw, 48px);
+  z-index: 9;
+  display: flex;
+  height: 38px;
+  padding: 0 17px 0 7px;
+  border: 0;
+  align-items: center;
+  gap: 9px;
+  background: var(--white);
+  color: var(--pink-dark);
+  font-size: clamp(0.58rem, 1.1vw, 0.72rem);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.back-button::after {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  content: "";
+  background: var(--yellow);
+}
+
+.back-icon {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  background: var(--pink-dark);
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.back-accent {
+  position: absolute;
+  top: -4px;
+  left: 30%;
+  width: 20px;
+  height: 7px;
+  transform: rotate(-3deg);
+  background: var(--yellow);
+}
+
+.back-button:hover {
+  transform: translateX(-3px);
+  background: #fff8fb;
+}
+
+.back-button:active {
+  transform: translateX(-1px) scale(0.98);
+}
+
+.back-button:focus-visible {
+  outline: 3px dashed var(--pink-dark);
+  outline-offset: 4px;
+}
+
 .color-background {
   position: absolute;
   inset: 0;

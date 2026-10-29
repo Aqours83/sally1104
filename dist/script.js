@@ -7,6 +7,7 @@ const postcardScroll = document.querySelector("#postcardScroll");
 const currentPage = document.querySelector("#currentPage");
 const scrollHintText = document.querySelector("#scrollHintText");
 const scrollArrow = document.querySelector(".scroll-arrow");
+const backButton = document.querySelector("#backButton");
 
 const colors = ["#ff5f9f", "#ff9fc3", "#ffd84d", "#ffb923", "#7bdff2", "#9b7bff", "#6fe3a1"];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -106,11 +107,46 @@ function scheduleFireworks() {
   );
 }
 
+function resetPostcardScroll() {
+  postcardScroll.style.scrollBehavior = "auto";
+  postcardScroll.scrollTop = 0;
+  updatePostcardProgress(1);
+
+  requestAnimationFrame(() => {
+    postcardScroll.scrollTop = 0;
+    requestAnimationFrame(() => {
+      postcardScroll.style.removeProperty("scroll-behavior");
+    });
+  });
+}
+
 function showPostcards() {
+  resetPostcardScroll();
   page.classList.add("show-postcards");
   postcards.setAttribute("aria-hidden", "false");
-  postcardScroll.scrollTop = 0;
   gift.disabled = true;
+}
+
+function resetExperience() {
+  fireworkTimers.forEach(window.clearTimeout);
+  fireworkTimers = [];
+  particles = [];
+
+  if (animationFrame) {
+    cancelAnimationFrame(animationFrame);
+    animationFrame = null;
+  }
+
+  context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  page.classList.remove("is-opening", "is-open", "is-fireworks-fading", "show-postcards");
+  postcards.setAttribute("aria-hidden", "true");
+  resetPostcardScroll();
+  gift.disabled = false;
+  gift.setAttribute("aria-expanded", "false");
+  isOpen = false;
+  updatePostcardProgress(1);
+
+  window.setTimeout(() => gift.focus(), 500);
 }
 
 function openGift() {
@@ -171,5 +207,7 @@ const cardObserver = new IntersectionObserver(
 
 document.querySelectorAll(".postcard-page").forEach((card) => cardObserver.observe(card));
 gift.addEventListener("click", openGift);
+backButton.addEventListener("click", resetExperience);
 window.addEventListener("resize", resizeCanvas);
+window.addEventListener("pageshow", resetPostcardScroll);
 resizeCanvas();
