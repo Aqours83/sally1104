@@ -1,0 +1,388 @@
+:root {
+  --pink: #ff76a8;
+  --pink-dark: #f05a92;
+  --pink-light: #ffb4ce;
+  --yellow: #ffd84d;
+  --yellow-dark: #f4bd32;
+  --white: #ffffff;
+  --ink: #25212c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: var(--white);
+  color: var(--ink);
+  font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.birthday-page {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--white);
+}
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.surprise {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  width: min(92vw, 920px);
+  min-height: 520px;
+  place-items: center;
+}
+
+.birthday-message {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  z-index: 4;
+  display: flex;
+  width: 100%;
+  margin: 0;
+  transform: translate(-50%, 22px) scale(0.82);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.16em;
+  opacity: 0;
+  color: var(--pink-dark);
+  font-size: clamp(2rem, 6.4vw, 5.6rem);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  text-align: center;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.birthday-message span:last-child {
+  color: var(--yellow-dark);
+}
+
+.birthday-page.is-open .birthday-message {
+  animation: message-in 800ms 560ms cubic-bezier(0.18, 0.9, 0.32, 1.35) forwards;
+}
+
+.gift {
+  position: relative;
+  display: block;
+  width: 300px;
+  height: 292px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gift:focus-visible {
+  outline: 5px solid rgba(240, 90, 146, 0.35);
+  outline-offset: 12px;
+  border-radius: 22px;
+}
+
+.gift-hint {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  color: var(--pink-dark);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  transition: opacity 220ms ease;
+}
+
+.gift:hover .gift-hint,
+.gift:focus-visible .gift-hint {
+  animation: hint-bounce 700ms ease-in-out infinite alternate;
+}
+
+.gift-lid,
+.gift-box {
+  position: absolute;
+  left: 50%;
+  display: block;
+  transform: translateX(-50%);
+}
+
+.gift-lid {
+  top: 48px;
+  z-index: 3;
+  width: 260px;
+  height: 86px;
+  transform-origin: 48% 100%;
+}
+
+.lid-top {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 52px;
+  border-radius: 10px 10px 7px 7px;
+  background: var(--pink-light);
+}
+
+.lid-ribbon {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 48px;
+  height: 52px;
+  transform: translateX(-50%);
+  background: var(--yellow);
+}
+
+.bow,
+.bow-knot {
+  position: absolute;
+  top: 0;
+  background: var(--yellow);
+}
+
+.bow {
+  width: 76px;
+  height: 42px;
+}
+
+.bow-left {
+  left: 61px;
+  transform: rotate(14deg) skewX(10deg);
+  border-radius: 80% 22% 55% 25%;
+}
+
+.bow-right {
+  right: 61px;
+  transform: rotate(-14deg) skewX(-10deg);
+  border-radius: 22% 80% 25% 55%;
+}
+
+.bow-knot {
+  top: 13px;
+  left: 50%;
+  width: 42px;
+  height: 34px;
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 9px;
+  background: var(--yellow-dark);
+}
+
+.gift-box {
+  top: 127px;
+  z-index: 2;
+  width: 226px;
+  height: 132px;
+  overflow: hidden;
+  border-radius: 7px 7px 14px 14px;
+  background: var(--pink);
+}
+
+.box-panel {
+  position: absolute;
+  inset-block: 0;
+  width: 50%;
+}
+
+.box-left {
+  left: 0;
+  background: var(--pink);
+}
+
+.box-right {
+  right: 0;
+  background: var(--pink-dark);
+}
+
+.box-ribbon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  width: 48px;
+  transform: translateX(-50%);
+  background: var(--yellow);
+}
+
+.box-sparkle {
+  position: absolute;
+  z-index: 3;
+  display: block;
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+  background: var(--white);
+}
+
+.sparkle-one {
+  top: 29px;
+  left: 25px;
+}
+
+.sparkle-two {
+  right: 29px;
+  bottom: 28px;
+  width: 8px;
+  height: 8px;
+}
+
+.sparkle-three {
+  bottom: 22px;
+  left: 51px;
+  width: 6px;
+  height: 6px;
+}
+
+.birthday-page.is-opening .gift-lid,
+.birthday-page.is-open .gift-lid {
+  animation: lid-open 900ms cubic-bezier(0.2, 0.8, 0.28, 1) forwards;
+}
+
+.birthday-page.is-opening .gift-box,
+.birthday-page.is-open .gift-box {
+  animation: box-pop 520ms ease-out 80ms both;
+}
+
+.birthday-page.is-opening .gift-hint,
+.birthday-page.is-open .gift-hint {
+  opacity: 0;
+}
+
+.replay {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  z-index: 5;
+  padding: 10px 18px;
+  transform: translate(-50%, 10px);
+  border: 0;
+  border-radius: 999px;
+  opacity: 0;
+  background: var(--yellow);
+  color: #6a4a00;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.birthday-page.is-open .replay {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 400ms 1800ms ease, transform 400ms 1800ms ease;
+}
+
+.replay:focus-visible {
+  outline: 4px solid rgba(240, 90, 146, 0.35);
+  outline-offset: 4px;
+}
+
+@keyframes lid-open {
+  0% {
+    transform: translateX(-50%) translateY(0) rotate(0deg);
+  }
+  38% {
+    transform: translateX(-50%) translateY(-28px) rotate(-4deg) scale(0.96);
+  }
+  100% {
+    transform: translateX(-46%) translateY(-68px) rotate(10deg) scale(0.9);
+  }
+}
+
+@keyframes box-pop {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  48% {
+    transform: translateX(-50%) scale(1.055, 0.94);
+  }
+}
+
+@keyframes message-in {
+  0% {
+    transform: translate(-50%, 22px) scale(0.82);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes hint-bounce {
+  to {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 640px) {
+  .surprise {
+    min-height: 480px;
+  }
+
+  .birthday-message {
+    top: 2%;
+    flex-direction: column;
+    gap: 0.04em;
+    font-size: clamp(2.15rem, 11.5vw, 4rem);
+  }
+
+  .gift {
+    transform: scale(0.86);
+  }
+
+  .replay {
+    bottom: 3%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gift:hover .gift-hint,
+  .gift:focus-visible .gift-hint {
+    animation: none;
+  }
+
+  .birthday-page.is-opening .gift-lid,
+  .birthday-page.is-open .gift-lid {
+    animation-duration: 1ms;
+  }
+
+  .birthday-page.is-opening .gift-box,
+  .birthday-page.is-open .gift-box {
+    animation: none;
+  }
+
+  .birthday-page.is-open .birthday-message {
+    animation-duration: 1ms;
+    animation-delay: 0ms;
+  }
+}

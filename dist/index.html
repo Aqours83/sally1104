@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="A little birthday surprise for Xinyi — 11.4"
+    />
+    <title>Happy Birthday to Xinyi · 11.4</title>
+    <link rel="stylesheet" href="./styles.css?v=2" />
+  </head>
+  <body>
+    <main class="birthday-page" id="birthdayPage">
+      <canvas id="fireworks" aria-hidden="true"></canvas>
+
+      <section class="surprise" aria-label="Xinyi 的生日惊喜">
+        <h1 class="birthday-message" id="birthdayMessage">
+          <span>Happy Birthday</span>
+          <span>to Xinyi · 11.4</span>
+        </h1>
+
+        <button
+          class="gift"
+          id="gift"
+          type="button"
+          aria-label="打开给 Xinyi 的生日礼物"
+          aria-expanded="false"
+        >
+          <span class="gift-hint" aria-hidden="true">CLICK TO OPEN</span>
+
+          <span class="gift-lid" aria-hidden="true">
+            <span class="lid-top"></span>
+            <span class="lid-ribbon"></span>
+            <span class="bow bow-left"></span>
+            <span class="bow bow-right"></span>
+            <span class="bow-knot"></span>
+          </span>
+
+          <span class="gift-box" aria-hidden="true">
+            <span class="box-panel box-left"></span>
+            <span class="box-panel box-right"></span>
+            <span class="box-ribbon"></span>
+            <span class="box-sparkle sparkle-one"></span>
+            <span class="box-sparkle sparkle-two"></span>
+            <span class="box-sparkle sparkle-three"></span>
+          </span>
+        </button>
+
+        <button class="replay" id="replay" type="button" aria-label="再次播放生日惊喜">
+          Replay
+        </button>
+      </section>
+    </main>
+
+    <script src="./script.js?v=3"></script>
+  </body>
+</html>
