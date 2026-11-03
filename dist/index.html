@@ -6,26 +6,26 @@
     <meta name="theme-color" content="#ffffff" />
     <meta
       name="description"
-      content="A little birthday surprise for Xinyi — 11.4"
+      content="A little birthday surprise for Sally — 11.4"
     />
-    <title>Happy Birthday to Xinyi · 11.4</title>
-    <link rel="stylesheet" href="./styles.css?v=5" />
+    <title>Happy Birthday to Sally · 11.4</title>
+    <link rel="stylesheet" href="./styles.css?v=8" />
   </head>
   <body>
     <main class="birthday-page" id="birthdayPage">
       <canvas id="fireworks" aria-hidden="true"></canvas>
 
-      <section class="surprise" aria-label="Xinyi 的生日惊喜">
+      <section class="surprise" aria-label="Sally 的生日惊喜">
         <h1 class="birthday-message" id="birthdayMessage">
           <span>Happy Birthday</span>
-          <span>to Xinyi · 11.4</span>
+          <span>to Sally · 11.4</span>
         </h1>
 
         <button
           class="gift"
           id="gift"
           type="button"
-          aria-label="打开给 Xinyi 的生日礼物"
+          aria-label="打开给 Sally 的生日礼物"
           aria-expanded="false"
         >
           <span class="gift-hint" aria-hidden="true">CLICK TO OPEN</span>
@@ -50,7 +50,7 @@
 
       </section>
 
-      <section class="postcards" id="postcards" aria-label="给 Xinyi 的生日明信片" aria-hidden="true">
+      <section class="postcards" id="postcards" aria-label="给 Sally 的生日明信片" aria-hidden="true">
         <button class="back-button" id="backButton" type="button" aria-label="返回礼物页面">
           <span class="back-icon" aria-hidden="true">←</span>
           <span>BACK TO GIFT</span>
@@ -69,13 +69,14 @@
           <section class="postcard-page" data-card="1" aria-label="明信片 1，共 4 张">
             <article class="postcard">
               <div class="postcard-inner">
-                <div class="photo-slot photo-slot-one" role="img" aria-label="明信片 1 图片占位区域">
+                <div class="photo-slot photo-slot-one">
+                  <img src="./assets/sally-01.webp" alt="Sally 在红顶小城的阳光下留影" decoding="async" />
                   <span class="photo-number">01</span>
-                  <span class="photo-label">YOUR PHOTO HERE</span>
                 </div>
                 <div class="postcard-copy">
-                  <span>POSTCARD 01</span>
-                  <strong>For Xinyi, with love.</strong>
+                  <span class="postcard-label">POSTCARD 01</span>
+                  <strong class="blessing-author">@周芯亦</strong>
+                  <p class="blessing-text">生日快乐生日快乐，有点遗憾没在高中和大一认识到你，但这一年的快乐，从各种小重奏到聚餐到排练的对视（I am watching u）弥补了所有。转眼我们都成老登了，祝你新的一年依旧热爱音乐和演奏，绩点也upupup🥳🥳</p>
                 </div>
               </div>
             </article>
@@ -84,13 +85,14 @@
           <section class="postcard-page" data-card="2" aria-label="明信片 2，共 4 张">
             <article class="postcard">
               <div class="postcard-inner">
-                <div class="photo-slot photo-slot-two" role="img" aria-label="明信片 2 图片占位区域">
+                <div class="photo-slot photo-slot-two">
+                  <img src="./assets/sally-02.webp" alt="Sally 在庭院树影下的留影" loading="lazy" decoding="async" />
                   <span class="photo-number">02</span>
-                  <span class="photo-label">YOUR PHOTO HERE</span>
                 </div>
                 <div class="postcard-copy">
-                  <span>POSTCARD 02</span>
-                  <strong>A little memory for 11.4.</strong>
+                  <span class="postcard-label">POSTCARD 02</span>
+                  <strong class="blessing-author">@陈茉晗</strong>
+                  <p class="blessing-text">祝我亲爱的卓首席生日快乐！！！🎂我们真是特别有缘分，相同专业、乐器、星座，就连生日都只差了两天呀😆非常幸运能在乐团遇见你这样真诚、善良且能交心的朋友！和你待在一起总是特别放心，感谢你总是不吝啬给予我很多的关心陪伴和帮助🥹也感谢你对乐团超出责任的用心，不管是排练结束后帮助同学们解决难点，还是每次认真详细的笔记，都让我特别感动！希望你新的一岁可以开心快乐，学业有成，万事顺意！！🥳🥳</p>
                 </div>
               </div>
             </article>
@@ -99,13 +101,14 @@
           <section class="postcard-page" data-card="3" aria-label="明信片 3，共 4 张">
             <article class="postcard">
               <div class="postcard-inner">
-                <div class="photo-slot photo-slot-three" role="img" aria-label="明信片 3 图片占位区域">
+                <div class="photo-slot photo-slot-three">
+                  <img src="./assets/sally-03.webp" alt="Sally 穿红裙走在石板街上" loading="lazy" decoding="async" />
                   <span class="photo-number">03</span>
-                  <span class="photo-label">YOUR PHOTO HERE</span>
                 </div>
                 <div class="postcard-copy">
-                  <span>POSTCARD 03</span>
-                  <strong>May every day feel this bright.</strong>
+                  <span class="postcard-label">POSTCARD 03</span>
+                  <strong class="blessing-author">@郑淇元</strong>
+                  <p class="blessing-text">卓欣怡：祝我爱的卓欣怡生日快乐🎂，在大西洋还是忘不了姚江边的晚风，回来再和你一起散步❤️祝新的一岁生活顺利，琴艺继续精进，回来再拉重奏^_^</p>
                 </div>
               </div>
             </article>
@@ -114,13 +117,14 @@
           <section class="postcard-page" data-card="4" aria-label="明信片 4，共 4 张">
             <article class="postcard">
               <div class="postcard-inner">
-                <div class="photo-slot photo-slot-four" role="img" aria-label="明信片 4 图片占位区域">
+                <div class="photo-slot photo-slot-four">
+                  <img src="./assets/sally-04.webp" alt="Sally 在城堡和花丛前挥手" loading="lazy" decoding="async" />
                   <span class="photo-number">04</span>
-                  <span class="photo-label">YOUR PHOTO HERE</span>
                 </div>
                 <div class="postcard-copy">
-                  <span>POSTCARD 04</span>
-                  <strong>Happy Birthday, Xinyi!</strong>
+                  <span class="postcard-label">POSTCARD 04</span>
+                  <strong class="blessing-author">@常乐</strong>
+                  <p class="blessing-text">弦起，便是星光。祝我们的小提琴首席生日快乐，永葆热爱，继续带领乐团演绎更多动人的乐章！</p>
                 </div>
               </div>
             </article>
