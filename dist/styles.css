@@ -519,7 +519,7 @@ button {
 .postcard-inner {
   display: grid;
   height: 100%;
-  grid-template-rows: minmax(0, 42%) minmax(0, 58%);
+  grid-template-rows: minmax(0, 62%) minmax(0, 38%);
   gap: 10px;
   background: var(--white);
 }
@@ -732,7 +732,7 @@ button {
 
   .postcard {
     width: min(86vw, 430px);
-    height: min(75svh, 610px);
+    height: min(82svh, 660px);
     padding: 13px;
     border-width: 3px;
   }
@@ -750,9 +750,9 @@ button {
   }
 
   .postcard-inner {
-    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    grid-template-columns: minmax(0, 1.35fr) minmax(235px, 0.65fr);
     grid-template-rows: 1fr;
-    gap: clamp(18px, 2.5vw, 34px);
+    gap: clamp(14px, 2vw, 24px);
   }
 
   .postcard-copy {
